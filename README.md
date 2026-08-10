@@ -1,0 +1,1 @@
+# Storagetax Infra - Bicep + GitOps
