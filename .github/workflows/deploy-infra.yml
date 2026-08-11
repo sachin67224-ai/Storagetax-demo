@@ -1,6 +1,11 @@
-name: Deploy Network Module
+name: Deploy Storagetax Infrastructure
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'platform/**'
   workflow_dispatch:
 
 permissions:
@@ -8,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  deploy-network:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -31,4 +36,13 @@ jobs:
             --resource-group rg-storagetax-nonprod \
             --template-file platform/modules/network/main.bicep \
             --parameters platform/modules/network/parameters/nonprod.bicepparam
-            
+
+      - name: Deploy uami (base) module
+        run: |
+          az deployment group create \
+            --resource-group rg-storagetax-nonprod \
+            --template-file platform/modules/uami/main.bicep \
+            --parameters platform/modules/uami/parameters/nonprod-base.bicepparam
+
+      # Jab agla module (uami-federated, acr, keyvault...) banega,
+      # uska naya step yahin niche add karenge
