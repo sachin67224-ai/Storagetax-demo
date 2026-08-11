@@ -51,7 +51,7 @@ jobs:
             --template-file platform/modules/uami-federated/main.bicep \
             --parameters platform/modules/uami-federated/parameters/nonprod-federated.bicepparam
 
-        - name: Deploy acr module
+         name: Deploy acr module
         run: |
           az deployment group create \
             --resource-group rg-storagetax-nonprod \
