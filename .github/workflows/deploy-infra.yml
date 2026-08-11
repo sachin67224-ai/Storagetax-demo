@@ -44,5 +44,9 @@ jobs:
             --template-file platform/modules/uami/main.bicep \
             --parameters platform/modules/uami/parameters/nonprod-base.bicepparam
 
-      # Jab agla module (uami-federated, acr, keyvault...) banega,
-      # uska naya step yahin niche add karenge
+      - name: Deploy uami (federated) module
+        run: |
+          az deployment group create \
+            --resource-group rg-storagetax-nonprod \
+            --template-file platform/modules/uami-federated/main.bicep \
+            --parameters platform/modules/uami-federated/parameters/nonprod-federated.bicepparam
