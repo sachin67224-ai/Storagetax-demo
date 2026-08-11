@@ -71,9 +71,4 @@ jobs:
             --resource-group rg-storagetax-nonprod \
             --template-file platform/modules/aks/main.bicep \
             --parameters platform/modules/aks/parameters/nonprod.bicepparam    
-      - name: Deploy vpn-gateway module
-        run: |
-          az deployment group create \
-            --resource-group rg-storagetax-nonprod \
-            --template-file platform/modules/vpn-gateway/main.bicep \
-            --parameters platform/modules/vpn-gateway/parameters/nonprod.bicepparam     
+      
