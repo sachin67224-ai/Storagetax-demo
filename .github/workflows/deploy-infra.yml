@@ -64,3 +64,10 @@ jobs:
             --resource-group rg-storagetax-nonprod \
             --template-file platform/modules/keyvault/main.bicep \
             --parameters platform/modules/keyvault/parameters/nonprod.bicepparam    
+
+      - name: Deploy aks module
+        run: |
+          az deployment group create \
+            --resource-group rg-storagetax-nonprod \
+            --template-file platform/modules/aks/main.bicep \
+            --parameters platform/modules/aks/parameters/nonprod.bicepparam    
