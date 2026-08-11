@@ -56,4 +56,11 @@ jobs:
           az deployment group create \
             --resource-group rg-storagetax-nonprod \
             --template-file platform/modules/acr/main.bicep \
-            --parameters platform/modules/acr/parameters/nonprod.bicepparam           
+            --parameters platform/modules/acr/parameters/nonprod.bicepparam         
+
+      - name: Deploy keyvault module
+        run: |
+          az deployment group create \
+            --resource-group rg-storagetax-nonprod \
+            --template-file platform/modules/keyvault/main.bicep \
+            --parameters platform/modules/keyvault/parameters/nonprod.bicepparam    
