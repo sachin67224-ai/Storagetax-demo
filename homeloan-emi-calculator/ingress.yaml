@@ -1,0 +1,21 @@
+# Optional — apply once you're ready to expose this publicly.
+# Uses the same Azure Application Routing addon already set up for argocd.storagetax.com.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: emi-calculator
+  namespace: storagetax
+  annotations:
+    kubernetes.io/ingress.class: webapprouting.kubernetes.azure.com
+spec:
+  rules:
+    - host: emi.storagetax.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: emi-calculator
+                port:
+                  number: 80
